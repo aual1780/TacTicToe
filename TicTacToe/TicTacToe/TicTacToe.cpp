@@ -23,3 +23,29 @@ std::vector<std::vector<BoardCell>> CreateBoard(int rows, int cols)
 
     return arr;
 }
+
+std::string DisplayBoard(std::vector<std::vector<BoardCell>> board)
+{
+    std::string result = "";
+    for (int r = 0; r < 3; ++r)
+    {
+        for (int c = 0; c < 3; ++c)
+        {
+            enum BoardCell spot = board[r][c];
+            if(spot == BoardCell::Empty)
+            {
+                result += " _ ";
+            }
+            if(spot == BoardCell::X)
+            {
+                result += " X ";
+            }
+            else if(spot == BoardCell::O)
+            {
+                result += " O ";
+            }
+        }
+        result += "\n";
+    }
+    return result;
+}
