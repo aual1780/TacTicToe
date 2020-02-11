@@ -65,6 +65,22 @@ void DisplayBoard(std::vector<std::vector<BoardCell>> arr, int rows, int cols)
     }
 }
 
+void GetPlayerChoice(std::vector<std::vector<BoardCell>> arr, int & row, int & col)
+{   
+    do{
+    do{
+    std::cout << "Please select the row you would like to play in (1-3)\n";
+    std::cin >> row;
+    row -= 1;
+    }while(row > 2 || row < 0);
+    do{
+    std::cout << "Please select the column you would like to play in (1-3)\n";
+    std::cin >> col;
+    col -= 1;
+    }while(col > 2 || col < 0);
+    }while (arr[row][col] != BoardCell::Empty);
+}
+
 
 int main()
 {
@@ -75,7 +91,10 @@ int main()
     PlaceMarker(board, 0, 0, BoardCell::X);
 
     DisplayBoard(board, rows, cols);
-
+    std::cout << "\n";
+    int row = -1;
+    int col = -1;
+    GetPlayerChoice(board,row,col);
 
     std::string discard;
     std::cin >> discard;
