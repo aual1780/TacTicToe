@@ -1,9 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
-#define UNDERLINE "\033[4m"
-#define CLOSEUNDERLINE "\033[0m"
+#include <stdexcept>
 
 enum class BoardCell
 {
@@ -31,6 +29,18 @@ std::vector<std::vector<BoardCell>> CreateBoard(int rows, int cols)
 {
     auto arr = std::vector<std::vector<BoardCell>>(rows, std::vector<BoardCell>(cols, BoardCell::Empty));
     return arr;
+}
+
+
+void PlaceMarker(std::vector<std::vector<BoardCell>>& board, const int& row, const int& col, const BoardCell& cell)
+{
+    auto str = CellToString(cell);
+    if (str == "_")
+    {
+        throw std::runtime_error("Invalid token");
+    }
+
+    board[row][col] = cell;
 }
 
 
@@ -78,6 +88,7 @@ int main()
     int cols = 3;
     auto board = CreateBoard(rows, cols);
 
+    PlaceMarker(board, 0, 0, BoardCell::X);
 
     DisplayBoard(board, rows, cols);
     std::cout << "\n";
