@@ -34,7 +34,7 @@ std::string DisplayBoard(std::vector<std::vector<BoardCell>> board)
             enum BoardCell spot = board[r][c];
             if(spot == BoardCell::Empty)
             {
-                result += "   ";
+                result += " _ ";
             }
             if(spot == BoardCell::X)
             {
