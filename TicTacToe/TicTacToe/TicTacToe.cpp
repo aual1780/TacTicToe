@@ -17,6 +17,7 @@ inline void operator^=(BoardCell& a, const int& b)
 
 std::string CellToString(const BoardCell& cell)
 {
+	
 	switch (cell)
 	{
 	case BoardCell::Empty:
